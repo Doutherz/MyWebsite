@@ -1,0 +1,216 @@
+@keyframes grow {
+    0% {
+        width: 400px;
+        height: 40%;
+      }
+      100% {
+        width: 60%;
+        height: 70%;
+      }
+}
+@keyframes slidein{
+    0% {
+        top: -30%;
+        left: 15%;
+      }
+      100% {
+        top: 10%;
+        left: 15%;
+      }
+}
+@keyframes slidein2{
+    0% {
+        bottom: -40%;
+        right: 15%;
+      }
+      100% {
+        bottom: 10%;
+        right: 15%;
+      }
+}
+@keyframes slideinleft {
+    0% {
+        transform: translateX(-200%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+}
+@keyframes slideinbot {
+    0% {
+        transform: translatey(200%);
+      }
+      100% {
+        transform: translatey(0);
+      }
+}
+@keyframes select {
+    0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: monospace;
+    background: linear-gradient(120deg,#2980b9,#8e44ad);
+    height: 100vn;
+    overflow: hidden;
+}   
+.center{
+    display: flex;
+    animation: 1.5s ease-out 0s 1 grow;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 70%;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(2rem);
+    z-index: 2;
+
+}
+.circle1,.circle2{
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.8),rgba(255,255,255,0.3));
+    height: 10rem;
+    width: 10rem;
+    position: absolute;
+    border-radius: 50%;
+    
+
+}
+.circle1{
+    top: 10%;
+    left: 15%;
+    animation: 2s ease-out 0s 1 slidein;
+    
+}
+.circle2{
+    bottom: 10%;
+    right: 15%;
+    height: 15rem;
+    width: 15rem;
+    animation: 2s ease-out 0s 1 slidein2;
+    
+}
+.main{
+    animation: 1s ease-out 0s 1 slideinbot;
+    flex: 2;
+    position: relative;
+    float: right;
+    margin: 5%;
+    margin-left: 5px;
+    background: linear-gradient(to right bottom, rgba(255,255,255,1),rgba(255,255,255,0.2));
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    
+}
+.logo{
+    width: 100%;
+    margin-left: 10px;
+    border-radius: 15px;
+    margin-bottom: 0;
+}
+.sidebar{
+    animation: 2s ease-out 0s 1 slideinleft;
+    
+    position: relative;
+    width: 200px;
+    overflow-x: hidden;
+    background: rgba(255,255,255,0.3);
+    border-radius: 10px;
+    transition: width 0.5s;
+
+}
+.sidebar.active{
+    width: 70px;
+}
+.sidebar ul{
+    flex: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 5px;
+    padding-top: 5px;
+
+}
+.sidebar ul li{
+    position: relative;
+    align-self: center;
+    list-style: none;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    
+}
+.sidebar ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: center;
+    
+    display: flex;
+    text-decoration: none;
+    color: black;
+
+}
+.sidebar ul li.active{
+    background: rgb(255, 255, 255);
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+    animation: 0.5s ease-in 0s 1 select;
+}   
+.sidebar ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 60px;
+    line-height: 40px;
+    text-align: center;
+
+}
+.sidebar ul li a .icon ion-icon{
+    font-size: 2.5em;
+
+}
+.sidebar ul li a .title{
+    position: relative;
+    display: block;
+    white-space: normal;
+    font-weight: 700;
+    padding-top: 5px;
+     
+}
+.toggle{
+    height: 40px;
+    width: 40px;
+    left: 70%;
+    margin: 10px;
+    position: relative;
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),rgba(255,255,255,0.3));
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+.toggle.active{
+    background: linear-gradient(to right bottom, rgba(255,255,255,0.7),rgba(255,255,255,0.6));
+    transform: rotate(180deg);
+    left: 20%;
+}
+.toggle ion-icon{
+    position: relative;
+    color: black;
+    font-size: 34px;
+}
+

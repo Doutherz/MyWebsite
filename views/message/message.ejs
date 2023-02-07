@@ -1,0 +1,98 @@
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Login</title>
+        <link rel="stylesheet" href="css/styleChat.css">
+        
+        <p hidden id="chat-name"><%= name %></p>
+    </head>
+    <body>
+        <div class="center">
+            <div class="dashboard">
+                <div class="logo">
+                    
+                    <h3>My Website</h3>
+                    <p>hello <%= name %></p>
+                </div>
+                <div class="sidebar">
+                    <div class="toggle"><ion-icon name="chevron-back-outline"></ion-icon></div>
+                    <ul>
+                        <li class="list">
+                            <a href="/home">
+                                <span class="icon"><ion-icon name="home-outline"></ion-icon></span>
+                                <span class="title">Home</span>
+                            </a>
+                        </li>
+                        <li class="list active">
+                            <a href="/chat">
+                                <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                                <span class="title">Messages</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon"><ion-icon name="cart-outline"></ion-icon></span>
+                                <span class="title">Shop</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon"><ion-icon name="person-outline"></ion-icon></span>
+                                <span class="title">Account</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="#">
+                                <span class="icon"><ion-icon name="settings-outline"></ion-icon></span>
+                                <span class="title">Settings</span>
+                            </a>
+                        </li>
+                        <li class="list">
+                            <a href="/logout?_method=DELETE">
+                                <span class="icon"><ion-icon name="log-out-outline"></ion-icon></span>
+                                <span class="title">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
+                    
+                </div>
+
+            </div>
+            <div class="main">
+                <h1>Chat</h1>
+                <div id="message-container"></div>
+                <form id="send-container">
+                    <input type="text" id="message-input" autocomplete="off">
+                    <button type="submit" id="send-button"><ion-icon name="chevron-forward-outline"></ion-icon></button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+        <script defer src="http://192.168.1.62:3000/socket.io/socket.io.js"></script>
+        <script defer src="scripts/chat-script.js"></script>
+        <script>
+            let menuToggle = document.querySelector(".toggle");
+            let sidebar = document.querySelector(".sidebar")
+            menuToggle.onclick = function(){
+                menuToggle.classList.toggle("active");
+                sidebar.classList.toggle("active");
+                
+            }
+
+            let list = document.querySelectorAll(".list");
+            for(let i=0; i<list.length; i++){
+                list[i].onclick = function(){
+                    let j = 0;
+                    while(j < list.length){
+                        list[j++].className = "list";
+                    }
+                    list[i].className = "list active"
+                }
+            }
+        </script>
+    </body>
+</html>
