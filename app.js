@@ -37,7 +37,7 @@ initializePassport(passport)
 
 app.set("port", process.env.PORT || 3000)
 const port = 80;
-const host = "192.168.1.62";
+const host = "localhost";
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
